@@ -10,7 +10,7 @@ const hash = require("./hash")
     @typedef {string} wif
 */
 /**
-    EOSKey..
+    GOCKey..
     @typedef {string} pubkey
 */
 
@@ -45,7 +45,7 @@ const ecc = {
         @example
 ecc.randomKey().then(privateKey => {
   console.log('Private Key:\t', privateKey) // wif
-  console.log('Public Key:\t', ecc.privateToPublic(privateKey)) // EOSkey...
+  console.log('Public Key:\t', ecc.privateToPublic(privateKey)) // GOCkey...
 })
     */
     randomKey: (cpuEntropyBits) => (
@@ -65,24 +65,24 @@ ecc.randomKey().then(privateKey => {
 
     /**
         @arg {wif} wif
-        @arg {string} [pubkey_prefix = 'EOS'] - public key prefix
+        @arg {string} [pubkey_prefix = 'GOC'] - public key prefix
 
         @return {pubkey}
 
         @example ecc.privateToPublic(wif) === pubkey
     */
-    privateToPublic: (wif, pubkey_prefix = 'EOS') =>
+    privateToPublic: (wif, pubkey_prefix = 'GOC') =>
       PrivateKey(wif).toPublic().toString(pubkey_prefix),
 
     /**
-        @arg {pubkey} pubkey - like EOSKey..
-        @arg {string} [pubkey_prefix = 'EOS']
+        @arg {pubkey} pubkey - like GOCKey..
+        @arg {string} [pubkey_prefix = 'GOC']
 
         @return {boolean} valid
 
         @example ecc.isValidPublic(pubkey) === true
     */
-    isValidPublic: (pubkey, pubkey_prefix = 'EOS') =>
+    isValidPublic: (pubkey, pubkey_prefix = 'GOC') =>
       PublicKey.isValid(pubkey, pubkey_prefix),
 
     /**
